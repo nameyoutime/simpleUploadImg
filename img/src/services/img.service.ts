@@ -15,14 +15,14 @@ export class ImgService {
     return Math.floor(Math.random() * 999999);
   }
 
-  onFileUpload(event, id) {
+  onFileUpload(event, id,message) {
     this.selecetdFile = event.target.files[0];
 
     const reader = new FileReader();
     reader.onload = () => {
       this.img = reader.result as string;
       if (id == -1) {
-        this.newUpload(this.img, this.getRandomId(), event.target.files[0].name);
+        this.newUpload(this.img, this.getRandomId(), event.target.files[0].name,message);
       } else {
         this.updateImg(this.img, id);
       }
@@ -32,11 +32,12 @@ export class ImgService {
 
 
 
-  async newUpload(img, id, name) {
+  async newUpload(img, id, name,message) {
     let data = {
       id: id,
       img: img,
-      name: name
+      name: name,
+      message:message
     }
     await this.http.post(environment.endpoint + "uploadImg", data).toPromise();
     this.getData();

@@ -18,7 +18,7 @@ export class ImgCardComponent implements OnInit {
 
   onFileUpload(event,id) {
     // this.imgSer.onFileUpload(event,"update");
-    this.imgSer.onFileUpload(event,id);
+    this.imgSer.onFileUpload(event,id,"none");
 
   }
   del(id){

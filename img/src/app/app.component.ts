@@ -1,3 +1,4 @@
+import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { Component } from '@angular/core';
 import { ImgService } from 'src/services/img.service';
 
@@ -8,12 +9,20 @@ import { ImgService } from 'src/services/img.service';
 })
 export class AppComponent {
   title = 'img';
+  message: string;
   constructor(private imgSer: ImgService) { }
 
   onFileUpload(event) {
-    this.imgSer.onFileUpload(event, -1);
+    if (this.message == undefined ||this.message == " "||this.message == null) {
+      alert("message is empty!");
+    } else {
+      this.imgSer.onFileUpload(event, -1,this.message);
+    }
     
-  } 
+  }
+  para(message) {
+    this.message = message;
+  }
   test() {
     this.imgSer.getData();
   }

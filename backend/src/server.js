@@ -16,13 +16,14 @@ app.get("/imgs", async (req, res) => {
 });
 
 app.post("/uploadImg",  (req, res) => {
-  let { id,img,name } = req.body;
+  let { id,img,name,message } = req.body;
   let task1 = new Task({
     id: id,
     img: img,
-    name:name
+    name:name,
+    message:message
   });
-  console.log(id,name);
+  // console.log(id,name);
   (async () => {
     await db.createTask(task1);
     res.send();
