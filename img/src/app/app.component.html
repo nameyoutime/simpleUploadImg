@@ -1,0 +1,7 @@
+<div >
+  <button  mat-button (click)="fileInput.click()">Upload a file</button>
+  <input class="visuallyhidden" type="file" (change)="onFileUpload($event)" accept=".png, .jpg, .jpeg" #fileInput>
+</div>
+
+<app-img-card></app-img-card>
+<router-outlet></router-outlet>
