@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'img';
   message: string;
   constructor(private imgSer: ImgService) { }
-
+//check file on upload
   onFileUpload(event) {
     if (this.message == undefined ||this.message == " "||this.message == null) {
       alert("message is empty!");
@@ -20,10 +20,10 @@ export class AppComponent {
     }
     
   }
+  
+  //put paragrapth = message
   para(message) {
     this.message = message;
   }
-  test() {
-    this.imgSer.getData();
-  }
+
 }
