@@ -23,7 +23,8 @@ export class ImgService {
     const reader = new FileReader();
     reader.onload = () => {
       this.img = reader.result as string;
-      
+      //check if id ==-1 => newupload
+      //else update current img with id
       if (id == -1) {
         this.newUpload(this.img, this.getRandomId(), event.target.files[0].name,message);
       } else {
