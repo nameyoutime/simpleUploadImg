@@ -12,6 +12,7 @@ class Database {
    * @returns {Promise<mongoose.Connection>}
    */
   async connectToDb(connectionString) {
+    //connect to db using promise and async
     return new Promise((resolve, reject) => {
       mongoose.connect(connectionString, {
         useNewUrlParser: true,
