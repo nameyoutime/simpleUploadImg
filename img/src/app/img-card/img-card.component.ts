@@ -15,12 +15,13 @@ export class ImgCardComponent implements OnInit {
     
   }
 
-
+  //put file to sevices for checking
   onFileUpload(event,id) {
     // this.imgSer.onFileUpload(event,"update");
     this.imgSer.onFileUpload(event,id,"none");
 
   }
+  //delete file
   del(id){
     this.imgSer.delImg(id);
   }
