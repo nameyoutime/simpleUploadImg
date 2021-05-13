@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'img';
   message: string;
   constructor(private imgSer: ImgService) { }
-//check file on upload
+//put file to sevices for checking
   onFileUpload(event) {
     if (this.message == undefined ||this.message == " "||this.message == null) {
       alert("message is empty!");
