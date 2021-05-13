@@ -1,13 +1,22 @@
-const mongoose = require("mongoose");
+
 const express = require("express");
 const cors = require("cors");
-const app = express();
-app.use(cors());
-const taskSchema = require("../schemas/task.schemas");
 const body = require("body-parser");
+const app = express();
+
+app.use(cors());
 app.use(body.json());
+
+
+
 const Database = require("./database");
 const db = new Database();
+
+//mongoose related
+const mongoose = require("mongoose");
+//get schema
+const taskSchema = require("../schemas/task.schemas");
+//
 const Task = mongoose.model("img", taskSchema);
 
 //get all imgs
