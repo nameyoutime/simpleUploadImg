@@ -10,11 +10,13 @@ const Database = require("./database");
 const db = new Database();
 const Task = mongoose.model("img", taskSchema);
 
+//get all imgs
 app.get("/imgs", async (req, res) => {
   let result = await Task.find();
   res.send(result);
 });
 
+//create new img
 app.post("/uploadImg",  (req, res) => {
   let { id,img,name,message } = req.body;
   let task1 = new Task({
@@ -23,13 +25,13 @@ app.post("/uploadImg",  (req, res) => {
     name:name,
     message:message
   });
-  // console.log(id,name);
   (async () => {
     await db.createTask(task1);
     res.send();
   })();
 });
 
+//detele img with id
 app.delete("/delete",  (req, res) => {
   let { id } = req.query;
   (async () => {
@@ -38,9 +40,9 @@ app.delete("/delete",  (req, res) => {
   })();
 });
 
+//update img with id
 app.put("/update",  (req, res) => {
   let { id,img } = req.body;
-  // console.log(id,img)
   (async () => {
     await Task.findOneAndUpdate(id, {
       img: img
