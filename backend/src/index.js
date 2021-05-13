@@ -11,8 +11,10 @@ let connectionString =
 
 async function main() {
   try {
-    //run server
+
+    //connect to db
     await instance.connectToDb(connectionString);
+    //run server with ip:port
     app.listen(config.PORT, config.HOST, () => {
       console.log(`server is running on ${config.HOST}:${config.PORT}`);
     });
