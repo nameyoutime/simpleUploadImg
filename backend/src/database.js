@@ -19,10 +19,11 @@ class Database {
         useUnifiedTopology: true,
       });
       const db = mongoose.connection;
-
+      //connection failed
       db.on("error", (err) => {
         reject("connection error:");
       });
+      //connect successs!
       db.once("open", function () {
         console.log("connected to server!");
         resolve(db);
