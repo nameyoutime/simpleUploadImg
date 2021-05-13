@@ -11,16 +11,19 @@ export class ImgService {
   constructor(private http: HttpClient) {
     this.getData();
   }
+  //get randomize id
   getRandomId() {
     return Math.floor(Math.random() * 999999);
   }
-
+  
+  //file upload img
   onFileUpload(event, id,message) {
     this.selecetdFile = event.target.files[0];
 
     const reader = new FileReader();
     reader.onload = () => {
       this.img = reader.result as string;
+      
       if (id == -1) {
         this.newUpload(this.img, this.getRandomId(), event.target.files[0].name,message);
       } else {
@@ -31,7 +34,7 @@ export class ImgService {
   }
 
 
-
+  //create new img
   async newUpload(img, id, name,message) {
     let data = {
       id: id,
@@ -42,10 +45,12 @@ export class ImgService {
     await this.http.post(environment.endpoint + "uploadImg", data).toPromise();
     this.getData();
   }
+  //get data
   async getData() {
     this.Imgs = await this.http.get(environment.endpoint + "imgs").toPromise();
   }
-
+  
+  //update img
   async updateImg(img, id) {
     let data = {
       id: id,
@@ -56,6 +61,7 @@ export class ImgService {
     this.getData();
   }
 
+  //delete img
   async delImg(id) {
     await this.http.delete(environment.endpoint + "delete?id=" + id).toPromise();
     this.getData();
